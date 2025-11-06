@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name – Portfolio</title>
+  <title>Paige Reeves – Portfolio</title>
   <meta name="description" content="Portfolio of p5.js sketches and other projects." />
   <style>
     :root{
@@ -51,20 +51,19 @@
     <header>
       <img class="avatar" src="https://picsum.photos/160?random=7" alt="avatar"/>
       <div class="title">
-        <h1>Your Name</h1>
-        <p>Designer • Developer • Student — showcasing p5.js sketches and other works</p>
+        <h1>Paige Reeves</h1>
+        <p>Designer • Developer • Student — Showcasing p5.js sketches and other works</p>
       </div>
       <nav class="links" aria-label="social links">
-        <a href="#">Resume</a>
-        <a href="#">GitHub</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">Email</a>
+        <a href="./assets/Reeves-Resume.pdf" target="_blank">Resume</a>
+        <a href="https://github.com/rpaigemei" target="_blank">GitHub</a>
+        <a href="www.linkedin.com/in/paige-reeves-91424b264" target="_blank">LinkedIn</a>
       </nav>
     </header>
 
     <section class="hero">
-      <h2>Hi! I make playful, interactive things.</h2>
-      <p>Below are my p5.js experiments and a few non-code projects. Everything here runs on GitHub Pages and is easy to update.</p>
+      <h2>Hello! I make cool, interactive projects.</h2>
+      <p>Below are my p5.js experiments and other coding projects.</p>
     </section>
 
     <div class="tabs" role="tablist">
@@ -74,7 +73,7 @@
     </div>
 
     <section class="grid" id="grid" aria-live="polite"></section>
-    <footer>© <span id="y"></span> Your Name • Built with plain HTML/CSS/JS • Hosted on GitHub Pages</footer>
+    <footer>© <span id="y"></span> Paige Reeves • Built with plain HTML/CSS/JS • Hosted on GitHub Pages</footer>
   </div>
 
 <script>
@@ -87,36 +86,29 @@
 // ==============================================================================
 const PROJECTS = [
   {
-    title: "Bubbles",
+    title: "It's the Great Puzzle, Charlie Brown",
     type: "p5",
-    embed: "https://editor.p5js.org/hello-p5/embed/SkYfz7kXo", // replace with your embed OR local path
-    thumb: "https://picsum.photos/800/500?random=1",
-    desc: "Mouse/touch to spawn bubbles.",
-    tags: ["p5.js", "animation"]
-  },
-  {
-    title: "Rock–Paper–Scissors",
-    type: "p5",
-    embed: "sketches/rps/index.html", // works when you export a sketch into /sketches/rps/
-    desc: "Simple game demo.",
+    embed: "https://editor.p5js.org/paigereeves/full/uT9ckxHHUb", // replace with your embed OR local path
+    thumb: "./assets/great-pumpkin.png",
+    desc: "Simple drag-and-drop puzzle featuring 'It's the Great Pumpkin, Charlie Brown.'",
     tags: ["p5.js", "game"]
   },
   {
-    title: "Poster Study",
-    type: "other",
-    link: "assets/poster-full.jpg",
-    img: "assets/poster-thumb.jpg",
-    desc: "Typography + layout experiment.",
-    tags: ["graphic design"]
+    title: "Project 1: Adventure Game",
+    type: "p5",
+    embed: "https://editor.p5js.org/paigereeves/full/wpeVY6l4Q", // works when you export a sketch into /sketches/rps/
+    thumb: "./assets/ratlock-holmes.png",
+    desc: "Ratlock Holmes",
+    tags: ["p5.js", "game"]
   },
   {
-    title: "Devlog: Procedural Trees",
-    type: "other",
-    link: "https://yourblog.example.com/proc-trees",
-    img: "https://picsum.photos/800/500?random=4",
-    desc: "Write‑up with images and code snippets.",
-    tags: ["writeup", "procedural"]
-  }
+    title: "Project 2: Interactive Experience",
+    type: "p5",
+    embed: "https://editor.p5js.org/paigereeves/full/CfGr0PtZA", // works when you export a sketch into /sketches/rps/
+    thumb: "./assets/hidden-picture.png",
+    desc: "The Hidden Picture",
+    tags: ["p5.js", "game"]
+  },
 ];
 
 // ===== RENDER ================================================================
@@ -139,21 +131,11 @@ function card(project){
   thumb.appendChild(badge);
 
   if(isP5){
-    if(project.thumb){
-      // Lazy trap: click to load iframe, improves performance
+    if (project.thumb) {
       const img = document.createElement('img');
-      img.src = project.thumb; img.alt = project.title;
+      img.src = project.thumb;
+      img.alt = project.title;
       thumb.appendChild(img);
-      thumb.style.cursor = 'pointer';
-      thumb.title = 'Click to load';
-      thumb.addEventListener('click', ()=>{
-        thumb.innerHTML = '';
-        thumb.appendChild(badge);
-        const ifr = document.createElement('iframe');
-        ifr.loading = 'lazy';
-        ifr.src = project.embed;
-        thumb.appendChild(ifr);
-      }, { once:true });
     } else {
       const ifr = document.createElement('iframe');
       ifr.loading = 'lazy';
